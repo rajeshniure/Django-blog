@@ -1,18 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>New post</h1>
+<h1 class="mb-4">{% if post.pk %}Edit Post{% else %}New Post{% endif %}</h1>
+
 <form method="POST" class="post-form">
-    {% csrf_token%}
+    {% csrf_token %}
     {{ form.as_p }}
-    
-    <button type="submit" class="save btn btn-default">Save</button>
-</form>
+    <button type="submit" class="btn btn-success">Save</button>
     {% if post.pk %}
-    <a href="{% url 'post_delete' pk=post.pk %}" class="btn btn-danger">
-        Delete
-    </a>
+        <a href="{% url 'post_delete' pk=post.pk %}" class="btn btn-danger ms-2">
+            Delete
+        </a>
     {% endif %}
-
-
+</form>
 {% endblock %}

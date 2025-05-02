@@ -1,22 +1,16 @@
 {% extends 'base.html' %}
 
-
-
 {% block content %}
-
-
 <div class="post">
     {% if post.published_date %}
-    <div class="date">
-        {{ post.published_date }}
-    </div>
+        <div class="date">{{ post.published_date }}</div>
     {% endif %}
-    <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span>
-    </a>
-    
+    <div class="d-flex justify-content-end">
+        <a class="btn btn-sm btn-outline-primary me-2" href="{% url 'post_edit' pk=post.pk %}">
+            <i class="bi bi-pencil"></i> Edit
+        </a>
+    </div>
     <h1>{{ post.title }}</h1>
     <p>{{ post.text|linebreaksbr }}</p>
 </div>
-
-
 {% endblock %}
